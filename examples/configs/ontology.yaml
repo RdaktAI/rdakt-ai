@@ -1,0 +1,34 @@
+# Per-field PII ontology — declare per-JSONPath rules for what gets
+# detected, how it's masked, and which fields are out of scope. Applied
+# *before* the global pipeline so structured fields (internal IDs, domain
+# identifiers) get treated specifically rather than scanned as free text.
+
+mode: active
+on_error: warn_and_forward
+
+pipeline:
+  - regex
+
+session:
+  store: memory
+
+ontology:
+  fields:
+    # Free-text user message: scan for the usual PII suspects only.
+    - path: "$.messages[*].content"
+      detect: ["EMAIL", "PHONE"]
+
+    # Internal user ID — never let it reach the LLM. Replace the whole
+    # value with a generated synthetic; same input maps to same output
+    # within a session, so multi-turn references stay consistent.
+    - path: "$.messages[*].metadata.user_id"
+      replace_with_synthetic:
+        type: USER_ID
+        format: "user-{n:06d}"
+
+    # Domain-specific case number — regex catches the format, hash strategy
+    # ensures cross-session correlation isn't possible (per-session salt).
+    - path: "$.messages[*].context.case_number"
+      detect_via_regex: '\bCASE-\d{4}-\d{6}\b'
+      detect_via_regex_as: CASE_NUMBER
+      mask_strategy: hash

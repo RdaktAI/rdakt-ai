@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [--maxkb=2000]
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-symlinks
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12
+    hooks:
+      - id: ruff-check
+        files: ^(rdakt_ai|tests)
+        types_or: [python, pyi]
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        files: ^(rdakt_ai|tests)
+        types_or: [python, pyi]

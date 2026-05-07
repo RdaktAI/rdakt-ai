@@ -1,0 +1,30 @@
+# Production config — regex + NER detection, SQLite persistence,
+# custom entity patterns, and fail-closed error handling.
+
+mode: active
+on_error: block
+
+pipeline:
+  - regex
+  - ner:
+      model: en_core_web_sm
+
+session:
+  store: sqlite
+  path: /var/lib/rdakt/sessions.db
+
+entities:
+  EMAIL:
+    strategy: token
+  PERSON:
+    strategy: synthetic
+  PHONE:
+    strategy: token
+  CREDIT_CARD:
+    strategy: token
+  EMPLOYEE_ID:
+    pattern: "EMP-\\d{6}"
+    strategy: token
+  ACCOUNT_NUMBER:
+    pattern: "\\d{4}-\\d{4}-\\d{4}"
+    strategy: token
