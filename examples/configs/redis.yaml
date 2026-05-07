@@ -1,0 +1,20 @@
+# Redis-backed session store — suitable for distributed deployments
+# where multiple application instances share anonymization state.
+
+mode: active
+on_error: warn_and_forward
+
+pipeline:
+  - regex
+
+session:
+  store: redis
+  url: redis://localhost:6379
+  ttl: 3600
+  prefix: "rdakt:"
+
+entities:
+  EMAIL:
+    strategy: token
+  PERSON:
+    strategy: synthetic

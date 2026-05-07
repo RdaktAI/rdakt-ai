@@ -1,0 +1,17 @@
+# Audit mode — detects PII and logs it but forwards the original
+# unanonymized text to the LLM. Useful for testing detection coverage
+# before switching to active mode.
+
+mode: audit
+on_error: warn_and_forward
+
+pipeline:
+  - regex
+
+entities:
+  EMAIL:
+    strategy: token
+  PERSON:
+    strategy: synthetic
+  SSN:
+    strategy: token

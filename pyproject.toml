@@ -1,0 +1,145 @@
+[project]
+name = "rdakt-ai"
+version = "0.3.0"
+description = "Composable anonymization middleware for LLM interactions"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+keywords = ["llm", "anonymization", "privacy", "pii", "middleware", "openai", "anthropic"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.27",
+    "faker>=33.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.12.5",
+]
+
+[project.optional-dependencies]
+redis = ["redis>=5.0"]
+ner = ["spacy>=3.7,!=3.8.14"]
+pydantic-ai = ["pydantic-ai>=0.2"]
+langchain = ["langchain>=1.2", "langchain-core>=0.3", "langchain-openai>=0.3"]
+all = ["rdakt-ai[redis,ner,pydantic-ai,langchain]"]
+
+[project.urls]
+Homepage = "https://github.com/cristiangreco94/rdakt-ai"
+Repository = "https://github.com/cristiangreco94/rdakt-ai"
+Issues = "https://github.com/cristiangreco94/rdakt-ai/issues"
+
+[project.scripts]
+rdakt-ai = "rdakt_ai.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rdakt_ai"]
+
+[tool.uv]
+managed = true
+python-preference = "only-managed"
+
+[dependency-groups]
+dev = [
+    "click>=8.0",
+    "openai>=1.0",
+    "anthropic>=0.40",
+    "google-genai>=1.0",
+    "pre-commit>=4.3.0",
+    "ruff>=0.14.0",
+    "fastapi>=0.115",
+    "aiosqlite>=0.21",
+    "pip>=26.1.1",
+]
+mypy = [
+    "mypy>=1.18.0",
+    "types-pyyaml",
+]
+test = [
+    "pytest>=8.0",
+    "pytest-asyncio>=1.0.0",
+    "pytest-cov>=6.0",
+]
+
+[tool.mypy]
+cache_dir = "./.mypy"
+check_untyped_defs = true
+files = "rdakt_ai/**/*.py,tests/**/*.py"
+follow_imports = "silent"
+show_error_code_links = true
+show_traceback = true
+strict_optional = false
+mypy_path = "."
+
+[[tool.mypy.overrides]]
+module = [
+    "spacy", "spacy.*",
+    "redis", "redis.*",
+    "pydantic_ai", "pydantic_ai.*",
+    "langchain", "langchain.*",
+    "langchain_core", "langchain_core.*",
+    "langchain_openai", "langchain_openai.*",
+    "langchain_anthropic", "langchain_anthropic.*",
+    "langchain_google_genai", "langchain_google_genai.*",
+]
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py311"
+src = [".", "tests"]
+indent-width = 4
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "UP",
+    "I",
+    "N",
+    "B",
+    "SIM",
+    "RET",
+    "RUF",
+    "W",
+    "PT",
+    "ASYNC",
+]
+ignore = [
+    "UP007",
+    "PLR0913",
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"__init__.py" = ["E402"]
+"tests/*" = ["PLR2004", "PLR0913", "SLF001"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
+asyncio_mode = "auto"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+    "ignore:.*unclosed.*:ResourceWarning",
+    "ignore::UserWarning",
+    "ignore::RuntimeWarning",
+]
+log_cli = true
+pythonpath = ["."]
+testpaths = ["tests"]

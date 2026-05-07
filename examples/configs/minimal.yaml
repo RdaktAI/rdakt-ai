@@ -1,0 +1,11 @@
+# Minimal config — regex detection with in-memory session store.
+# This is equivalent to the default configuration.
+
+mode: active
+on_error: warn_and_forward
+
+pipeline:
+  - regex
+
+session:
+  store: memory

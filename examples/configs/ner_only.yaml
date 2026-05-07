@@ -1,0 +1,15 @@
+# NER-only config — uses spaCy Named Entity Recognition without regex.
+# Requires: pip install rdakt-ai[ner] && python -m spacy download en_core_web_sm
+
+mode: active
+on_error: warn_and_forward
+
+pipeline:
+  - ner:
+      model: en_core_web_sm
+
+entities:
+  PERSON:
+    strategy: synthetic
+  ORG:
+    strategy: synthetic
