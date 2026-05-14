@@ -120,7 +120,7 @@ def test_exports_create_store() -> None:
     assert create_store is not None
 
 
-def test_version_is_0_3_0() -> None:
+def test_version_is_0_1_0() -> None:
     import rdakt_ai
 
-    assert rdakt_ai.__version__ == "0.3.0"
+    assert rdakt_ai.__version__ == "0.1.0"
