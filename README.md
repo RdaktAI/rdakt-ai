@@ -1,6 +1,8 @@
 # Rdakt AI
 
-Composable anonymization middleware for LLM interactions. Detects sensitive data in outbound requests, anonymizes it before sending to LLM providers, and de-anonymizes responses — transparently.
+Composable anonymization middleware for LLM interactions. Rdakt AI sits between your application and the LLM provider as an `httpx` transport: it detects sensitive data in outbound requests, anonymizes it with tokens or synthetic values before the payload leaves your process, and de-anonymizes the response — including streaming responses — transparently on the way back.
+
+Works out of the box with the official **OpenAI**, **Anthropic**, and **Google Gemini** SDKs (sync and async), plus first-class integrations for **LangChain** and **Pydantic AI** agent frameworks. Streaming responses, multi-turn token consistency, custom regex patterns, and pluggable session stores (memory, SQLite, Redis) are all supported — and a hosted gateway is available if you'd rather not run the middleware in-process.
 
 ## Installation
 
