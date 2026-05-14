@@ -7,22 +7,33 @@ Works out of the box with the official **OpenAI**, **Anthropic**, and **Google G
 ## Installation
 
 ```bash
-uv pip install -e .
+pip install rdakt-ai
+```
+
+Or with `uv`:
+
+```bash
+uv add rdakt-ai
+```
+
+Optional extras: `redis` (Redis session store), `ner` (spaCy NER), `langchain`, `pydantic-ai`, `cli` (scaffolding + offline demo command), and `all` for everything.
+
+```bash
+pip install "rdakt-ai[redis]"
+pip install "rdakt-ai[all]"
 ```
 
 ### CLI
 
-Run the CLI directly from the project environment (no separate install needed):
+Install the `cli` extra to get the `rdakt-ai` command:
 
 ```bash
-uv run rdakt-ai demo
-uv run rdakt-ai init
+pip install "rdakt-ai[cli]"
+rdakt-ai demo
+rdakt-ai init
 ```
 
-> **Note:** The CLI depends on `click` and other packages from the dev dependency group.
-> Running with `uv run` uses the project's virtual environment where these are available.
-> `uv tool install .` will **not** work because it creates an isolated environment
-> with only the core dependencies.
+If you're developing against a local checkout, `uv run rdakt-ai demo` resolves the CLI dependencies against the project's virtual environment.
 
 ## Quick Start
 

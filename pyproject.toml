@@ -1,6 +1,6 @@
 [project]
 name = "rdakt-ai"
-version = "0.1.0"
+version = "0.1.1"
 description = "Composable anonymization middleware for LLM interactions"
 readme = "README.md"
 license = "MIT"
@@ -27,16 +27,17 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+cli = ["click>=8.0"]
 redis = ["redis>=5.0"]
 ner = ["spacy>=3.7,!=3.8.14"]
 pydantic-ai = ["pydantic-ai>=0.2"]
 langchain = ["langchain>=1.2", "langchain-core>=0.3", "langchain-openai>=0.3"]
-all = ["rdakt-ai[redis,ner,pydantic-ai,langchain]"]
+all = ["rdakt-ai[cli,redis,ner,pydantic-ai,langchain]"]
 
 [project.urls]
-Homepage = "https://github.com/cristiangreco94/rdakt-ai"
-Repository = "https://github.com/cristiangreco94/rdakt-ai"
-Issues = "https://github.com/cristiangreco94/rdakt-ai/issues"
+Homepage = "https://github.com/RdaktAI/rdakt-ai"
+Repository = "https://github.com/RdaktAI/rdakt-ai"
+Issues = "https://github.com/RdaktAI/rdakt-ai/issues"
 
 [project.scripts]
 rdakt-ai = "rdakt_ai.cli:main"
