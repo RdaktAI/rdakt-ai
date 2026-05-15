@@ -392,4 +392,10 @@ make audit
 
 ## License
 
-MIT
+[FSL-1.1-MIT](LICENSE.md) — Functional Source License with MIT Future License.
+
+You may freely use, modify, and redistribute rdakt-ai for any purpose **other than a Competing Use** — that is, you may not offer rdakt-ai (or substantially similar functionality) to third parties as a commercial product or service that competes with Rdakt AI.
+
+Internal use, non-commercial education and research, and professional services to other licensees are all permitted. Two years after each release, that version automatically converts to the MIT license.
+
+For commercial / reseller licensing, contact us.

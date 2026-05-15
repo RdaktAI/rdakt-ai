@@ -1,6 +1,6 @@
 """Rdakt AI — composable anonymization middleware for LLM interactions."""
 
-__version__ = "0.1.2"
+__version__ = "0.2.0"
 
 from rdakt_ai.anonymizer import AnonymizationStrategy, Anonymizer
 from rdakt_ai.config import (
