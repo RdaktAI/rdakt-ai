@@ -152,7 +152,7 @@ def protect_agent(
 
     # PydanticAI doesn't expose a public API for the provider yet,
     # so we access _provider to reconstruct it with our transport.
-    new_provider = type(model._provider)(http_client=wired_client)  # type: ignore[attr-defined]
+    new_provider = type(model._provider)(http_client=wired_client)  # type: ignore[attr-defined,call-arg]
     new_model = type(model)(model.model_name, provider=new_provider)  # type: ignore[call-arg,arg-type,misc]
 
     new_agent = copy.copy(agent)
