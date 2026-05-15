@@ -4,7 +4,7 @@
 def test_version() -> None:
     from rdakt_ai import __version__
 
-    assert __version__  # non-empty; Task 9 bumps to 0.2.0
+    assert __version__
 
 
 def test_all_exports_importable() -> None:
@@ -118,9 +118,3 @@ def test_exports_create_store() -> None:
     from rdakt_ai import create_store
 
     assert create_store is not None
-
-
-def test_version_is_0_1_2() -> None:
-    import rdakt_ai
-
-    assert rdakt_ai.__version__ == "0.2.0"

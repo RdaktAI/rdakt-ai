@@ -1,6 +1,12 @@
 """Rdakt AI — composable anonymization middleware for LLM interactions."""
 
-__version__ = "0.2.0"
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _pkg_version
+
+try:
+    __version__ = _pkg_version("rdakt-ai")
+except PackageNotFoundError:
+    __version__ = "0.0.0+unknown"
 
 from rdakt_ai.anonymizer import AnonymizationStrategy, Anonymizer
 from rdakt_ai.config import (

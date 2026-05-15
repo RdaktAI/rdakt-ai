@@ -3566,7 +3566,6 @@ wheels = [
 
 [[package]]
 name = "rdakt-ai"
-version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "faker" },
@@ -3627,20 +3626,26 @@ test = [
 
 [package.metadata]
 requires-dist = [
+    { name = "click", marker = "extra == 'all'", specifier = ">=8.0" },
     { name = "click", marker = "extra == 'cli'", specifier = ">=8.0" },
     { name = "faker", specifier = ">=33.0" },
     { name = "httpx", specifier = ">=0.27" },
+    { name = "langchain", marker = "extra == 'all'", specifier = ">=1.2" },
     { name = "langchain", marker = "extra == 'langchain'", specifier = ">=1.2" },
+    { name = "langchain-core", marker = "extra == 'all'", specifier = ">=0.3" },
     { name = "langchain-core", marker = "extra == 'langchain'", specifier = ">=0.3" },
+    { name = "langchain-openai", marker = "extra == 'all'", specifier = ">=0.3" },
     { name = "langchain-openai", marker = "extra == 'langchain'", specifier = ">=0.3" },
     { name = "pydantic", specifier = ">=2.12.5" },
+    { name = "pydantic-ai", marker = "extra == 'all'", specifier = ">=0.2" },
     { name = "pydantic-ai", marker = "extra == 'pydantic-ai'", specifier = ">=0.2" },
     { name = "pyyaml", specifier = ">=6.0" },
-    { name = "rdakt-ai", extras = ["cli", "redis", "ner", "pydantic-ai", "langchain"], marker = "extra == 'all'" },
+    { name = "redis", marker = "extra == 'all'", specifier = ">=5.0" },
     { name = "redis", marker = "extra == 'redis'", specifier = ">=5.0" },
+    { name = "spacy", marker = "extra == 'all'", specifier = ">=3.7,!=3.8.14" },
     { name = "spacy", marker = "extra == 'ner'", specifier = ">=3.7,!=3.8.14" },
 ]
-provides-extras = ["cli", "redis", "ner", "pydantic-ai", "langchain", "all"]
+provides-extras = ["all", "cli", "langchain", "ner", "pydantic-ai", "redis"]
 
 [package.metadata.requires-dev]
 dev = [
