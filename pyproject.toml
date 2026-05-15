@@ -1,6 +1,6 @@
 [project]
 name = "rdakt-ai"
-version = "0.2.0"
+dynamic = ["version"]
 description = "Composable anonymization middleware for LLM interactions"
 readme = "README.md"
 license = "LicenseRef-FSL-1.1-MIT"
@@ -43,8 +43,12 @@ Issues = "https://github.com/RdaktAI/rdakt-ai/issues"
 rdakt-ai = "rdakt_ai.cli:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { local_scheme = "no-local-version" }
 
 [tool.hatch.build.targets.wheel]
 packages = ["rdakt_ai"]
