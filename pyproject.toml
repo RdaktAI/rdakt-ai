@@ -6,7 +6,25 @@ readme = "README.md"
 license = "LicenseRef-FSL-1.1-MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.11"
-keywords = ["llm", "anonymization", "privacy", "pii", "middleware", "openai", "anthropic"]
+keywords = [
+    "llm",
+    "anonymization",
+    "deanonymization",
+    "redact",
+    "redaction",
+    "privacy",
+    "pii",
+    "pii-detection",
+    "sensitive-data",
+    "data-protection",
+    "gdpr",
+    "llm-security",
+    "middleware",
+    "proxy",
+    "openai",
+    "anthropic",
+    "gemini",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -36,6 +54,8 @@ all = ["rdakt-ai[cli,redis,ner,pydantic-ai,langchain]"]
 
 [project.urls]
 Homepage = "https://rdakt.ai"
+Documentation = "https://docs.rdakt.ai"
+"Hosted Gateway" = "https://rdakt.ai/gateway"
 Repository = "https://github.com/RdaktAI/rdakt-ai"
 Issues = "https://github.com/RdaktAI/rdakt-ai/issues"
 
