@@ -4,6 +4,16 @@ Composable anonymization middleware for LLM interactions. Rdakt AI sits between 
 
 Works out of the box with the official **OpenAI**, **Anthropic**, and **Google Gemini** SDKs (sync and async), plus first-class integrations for **LangChain** and **Pydantic AI** agent frameworks. Streaming responses, multi-turn token consistency, custom regex patterns, and pluggable session stores (memory, SQLite, Redis) are all supported — and a hosted gateway is available if you'd rather not run the middleware in-process.
 
+> **Don't want to self-host?** The **[Rdakt Gateway](https://rdakt.ai/gateway)** is a hosted, drop-in proxy that runs this same pipeline for you — bring your provider keys, point your `base_url` at the gateway, and get per-request traces and policy controls in a dashboard. **[Get an API key →](https://app.rdakt.ai/login)** · **[Docs →](https://docs.rdakt.ai)**
+>
+> | | Self-hosted (this library) | [Hosted Gateway](https://rdakt.ai/gateway) |
+> |---|---|---|
+> | Runs | In your process, as an `httpx` transport | Managed proxy at `gateway.rdakt.ai` |
+> | Setup | `pip install rdakt-ai` | Point `base_url` at the gateway |
+> | Config | `rdakt.yaml` / code | Dashboard policies |
+> | Traces & usage | Your own logging | Built-in, per request |
+> | Price | Free (FSL-1.1-MIT) | Free tier · 10k req/mo, no card |
+
 ## Installation
 
 ```bash
